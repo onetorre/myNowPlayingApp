@@ -12,9 +12,32 @@ const T = new Twit({
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 });
 
-//set my geolocation manually
-let lat = "37.776992";
-let lng ="-122.416333";
+//Find my geolocation from browser
+function geoFindMe() {
+  var output = document.getElementById("out");
+
+  if (!navigator.geolocation){
+    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
+  }
+
+  function success(position) {
+    var lat  = position.coords.latitude;
+    var lng = position.coords.longitude;
+
+    output.innerHTML = '<p>Latitude is ' + lat + '° Longitude is ' + lng + '°</p>';
+
+}
+
+
+  function error() {
+    output.innerHTML = "Unable to retrieve your location";
+  }
+
+  output.innerHTML = "<p>Locating…</p>";
+
+  navigator.geolocation.getCurrentPosition(success, error);
+}
 
 
 //set twitter API search params
