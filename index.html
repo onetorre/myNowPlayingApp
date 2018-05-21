@@ -15,6 +15,21 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="assets/css/material-kit.css" rel="stylesheet" />
+
+  <!--   Core JS Files   -->
+  <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+  <script src="assets/js/plugins/moment.min.js"></script>
+
+  <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+  <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+  <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
+  <script src="assets/js/material-kit.js?v=2.0.3" type="text/javascript"></script>
+  <script src="assets/js/app.js" type="text/javascript"></script>
+
 </head>
 
 <body class="profile-page sidebar-collapse">
@@ -88,10 +103,12 @@
           <h3>Got a great song to share? Tweet it from <a href="https://twitter.com/BInowplaying">@BInowplaying</a> (because that's absolutely not spammy at all)! </h3><br/>
         </div>
         <div class="row">
-          <form id="tweetForm" onsubmit="return false;" class="tweetFormClass">
+          <form id="tweetForm"  class="tweetFormClass">
             <input placeholder="Your tweet" type="text" id="userInputContent" />
             <input placeholder="URL of video" type="text" id="userInputURL" />
-            <input type="submit" class="btn btn-info btn-raised btn-raised" onclick="tweetMyTweetButton();" />
+            <input type="button" class="btn btn-info btn-raised btn-raised"
+                   onclick="globalState.postTweet(document.getElementById('userInputContent').value, document.getElementById('userInputURL').value);" >
+
           </form>
         </div>
       </div>
@@ -131,20 +148,6 @@
       </div>
     </div>
   </footer>
-  <!--   Core JS Files   -->
-  <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-  <script src="assets/js/plugins/moment.min.js"></script>
-  <script type='text/javascript' src="Nodejs/get-tweet.js"></script>
-  <script type='text/javascript' src="Nodejs/post-tweet.js"></script>
-
-  <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-  <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
-  <script src="assets/js/material-kit.js?v=2.0.3" type="text/javascript"></script>
 </body>
 
 </html>
