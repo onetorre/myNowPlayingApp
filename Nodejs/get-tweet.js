@@ -2,6 +2,8 @@ console.log("Juan is awesome");
 
 const Twit = require('twit');
 
+//const gmaps = require('maps.js')
+
 const T = new Twit({
   consumer_key:         'CXVNsTDohsJaIxl0cjpuLKXYr',
   consumer_secret:      'Y49dNi2NPN9vJaPS95QnRLslOqisEuC7v934lHOfN05cVjbtDB',
@@ -10,26 +12,41 @@ const T = new Twit({
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 });
 
-//  get user location
+//Find my geolocation from browser
+function geoFindMe() {
+  var output = document.getElementById("out");
 
-
-/*function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    console.log('You have messed up');
+  if (!navigator.geolocation){
+    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
   }
-};
 
-function showPosition(){
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-};
-*/
+  function success(position) {
+    var lat  = position.coords.latitude;
+    var lng = position.coords.longitude;
 
-let latitude = '4.704238';
-let longitude = '-74.057785';
-let userCity = latitude + ',' + longitude + ',' + '100km';
+    output.innerHTML = '<p>Latitude is ' + lat + '° Longitude is ' + lng + '°</p>';
+
+}
+
+
+  function error() {
+    output.innerHTML = "Unable to retrieve your location";
+  }
+
+  output.innerHTML = "<p>Locating…</p>";
+
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+
+//set my geolocation manually
+// let lat = "4.704251";
+// let lng ="-74.05778250000002";
+
+
+//set twitter API search params
+
+let userCity = lat + ',' + lng + ',' + '100km';
 
 //  search twitter for all tweets containing the word 'banana' since July 11, 2011
 //
@@ -49,3 +66,52 @@ function gotData(err, data, response) {
     console.log(tweets[i].user['screen_name'] + ' tweeted: ' + tweets[i].text);
   }
 };
+
+// //get city
+// function initialize() {
+//     geocoder = new google.maps.Geocoder();
+//
+//
+//
+//   }
+//
+//   function codeLatLng(lat, lng) {
+//
+//     var latlng = new google.maps.LatLng(lat, lng);
+//     geocoder.geocode({'latLng': latlng}, function(results, status) {
+//       if (status == google.maps.GeocoderStatus.OK) {
+//       console.log(results)
+//         if (results[1]) {
+//          //formatted address
+//          alert(results[0].formatted_address)
+//         //find country name
+//              for (var i=0; i<results[0].address_components.length; i++) {
+//             for (var b=0;b<results[0].address_components[i].types.length;b++) {
+//
+//             //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+//                 if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
+//                     //this is the object you are looking for
+//                     city= results[0].address_components[i];
+//                     break;
+//                 }
+//             }
+//         }
+//         //city data
+//         alert(city.short_name + " " + city.long_name)
+//
+//
+//         } else {
+//           alert("No results found");
+//         }
+//       } else {
+//         alert("Geocoder failed due to: " + status);
+//       }
+//     });
+//   }
+// //testing coords to city
+//
+// function myLocatedCity() {
+//   var output2 = document.getElementById("out2");
+//     output2.innerHTML = city.long_name;
+//
+// }

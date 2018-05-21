@@ -29,6 +29,8 @@
   <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
   <script src="assets/js/material-kit.js?v=2.0.3" type="text/javascript"></script>
   <script src="assets/js/app.js" type="text/javascript"></script>
+  <script src="Nodejs/get-tweet.js" type="text/javascript"></script>
+  <script src="Nodejs/maps.js" type="text/javascript"></script>
 
 </head>
 
@@ -48,7 +50,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://github.com/onetorre" target="_blank" data-original-title="Contribute with me">
-              <i class="fa fa-twitter"></i>
+              <i class="fa fa-github"></i>
             </a>
           </li>
           <li class="nav-item">
@@ -83,7 +85,6 @@
               <div class="name">
                 <h1 class="title">Juan Colmenares</h1>
                 <h2>SEO Engineer</h2>
-                <a href="" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
                 <a href="https://twitter.com/onecolmenares" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
                 <a href="https://www.instagram.com/onecolmenares" class="btn btn-just-icon btn-link btn-instagram"><i class="fa fa-instagram"></i></a>
               </div>
@@ -91,7 +92,9 @@
           </div>
         </div>
         <div class="description text-center">
-          <p>This page shows #nowplaying tweets in San Francisco that contain a YouTube link. It also allows you to post a #nowplaying tweet with a YouTube Link.</p>
+          <p>This page shows #nowplaying tweets in:</p>
+          <p><button onclick="geoFindMe()">Show my location</button><div id="out"></div></p>
+          <br/><p>that contain a YouTube link. It also allows you to post a #nowplaying tweet with a YouTube Link.</p>
         </div>
       </div>
     </div>
@@ -106,10 +109,75 @@
           <form id="tweetForm"  class="tweetFormClass">
             <input placeholder="Your tweet" type="text" id="userInputContent" />
             <input placeholder="URL of video" type="text" id="userInputURL" />
-            <input type="button" class="btn btn-info btn-raised btn-raised"
-                   onclick="globalState.postTweet(document.getElementById('userInputContent').value, document.getElementById('userInputURL').value);" >
-
+            <input type="button" class="btn btn-info btn-raised btn-raised" value="Tweet!"
+                   onclick="globalState.postTweet(document.getElementById('userInputContent').value, document.getElementById('userInputURL').value);">
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main main-raised2">
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <h3>Video #1</h3><br/>
+        </div>
+        <div class="row">
+          <blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr">another test <a href="https://t.co/uFBhyx6o2U">https://t.co/uFBhyx6o2U</a> <a href="https://twitter.com/hashtag/nowplaying?src=hash&amp;ref_src=twsrc%5Etfw">#nowplaying</a></p>&mdash; BI nowplaying (@BInowplaying) <a href="https://twitter.com/BInowplaying/status/998543026388684800?ref_src=twsrc%5Etfw">May 21, 2018</a></blockquote>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/pNyzWagLcJE?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <h3>Video #2</h3><br/>
+        </div>
+        <div class="row">
+          <blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr">testing new commit <a href="https://t.co/2sF1MI3DD6">https://t.co/2sF1MI3DD6</a> <a href="https://twitter.com/hashtag/nowplaying?src=hash&amp;ref_src=twsrc%5Etfw">#nowplaying</a></p>&mdash; BI nowplaying (@BInowplaying) <a href="https://twitter.com/BInowplaying/status/998384709192372224?ref_src=twsrc%5Etfw">May 21, 2018</a></blockquote>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/Nck6BZga7TQ?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <h3>Video #3</h3><br/>
+        </div>
+        <div class="row">
+          <blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr">[Test by JC] Soul-reaching song 123 <a href="https://t.co/cIWHs4SEKp">https://t.co/cIWHs4SEKp</a> <a href="https://twitter.com/hashtag/nowplaying?src=hash&amp;ref_src=twsrc%5Etfw">#nowplaying</a></p>&mdash; BI nowplaying (@BInowplaying) <a href="https://twitter.com/BInowplaying/status/998378878497275904?ref_src=twsrc%5Etfw">May 21, 2018</a></blockquote>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/eiDiKwbGfIY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <h3>Video #4</h3><br/>
+        </div>
+        <div class="row">
+          <blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/nowplaying?src=hash&amp;ref_src=twsrc%5Etfw">#nowplaying</a> Paul McCartney - Let me roll it <a href="https://t.co/87MLZEpN70">https://t.co/87MLZEpN70</a></p>&mdash; BI nowplaying (@BInowplaying) <a href="https://twitter.com/BInowplaying/status/997709557693665280?ref_src=twsrc%5Etfw">May 19, 2018</a></blockquote>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/lzuwvZBfNeI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <h3>Video #5</h3><br/>
+        </div>
+        <div class="row">
+          <blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="pt" dir="ltr"><a href="https://twitter.com/hashtag/nowplaying?src=hash&amp;ref_src=twsrc%5Etfw">#nowplaying</a> Cidade Negra - Girassol <a href="https://t.co/fjizea9j1Q">https://t.co/fjizea9j1Q</a></p>&mdash; BI nowplaying (@BInowplaying) <a href="https://twitter.com/BInowplaying/status/997152415626551296?ref_src=twsrc%5Etfw">May 17, 2018</a></blockquote>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/uu27nTgZKeg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -128,16 +196,6 @@
               LinkedIn
             </a>
           </li>
-          <!--<li>
-            <a href="https://blog.creative-tim.com">
-              Blog
-            </a>
-          </li>
-          <li>
-            <a href="https://www.creative-tim.com/license">
-              Licenses
-            </a>
-          </li>-->
         </ul>
       </nav>
       <div class="copyright float-right">
